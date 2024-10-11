@@ -1,0 +1,24 @@
+function TeleportToPlayer()
+  -- Get a list of all players
+  local playerList = GetPlayerList()
+
+  -- Prompt the user for the target player's name
+  local targetName = GetInput("Enter the name of the player you want to teleport to:")
+
+  -- Find the target player
+  local targetPlayer = nil
+  for _, player in pairs(playerList) do
+    if player.Name == targetName then
+      targetPlayer = player
+      break
+    end
+  end
+
+  -- Teleport to the target player
+  if targetPlayer then
+    TeleportToPosition(targetPlayer.Position)
+    print("Teleported to " .. targetPlayer.Name)
+  else
+    print("Player not found.")
+  end
+end
